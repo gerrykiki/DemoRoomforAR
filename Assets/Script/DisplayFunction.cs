@@ -5,6 +5,7 @@ using UnityEngine;
 public class DisplayFunction : MonoBehaviour {
 	private bool isMouseDrag;
 	public GameObject ModelTarget;
+	//public Material ModelTargetMaterial;
 	// Use this for initialization
 	void Start () {
 		isMouseDrag = false;
@@ -21,7 +22,7 @@ public class DisplayFunction : MonoBehaviour {
 		{
 			isMouseDrag = false;
 		}
-
+		//Mouse drag time
 		if (isMouseDrag)
 		{
 			Ray MouseRayPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,11 +30,12 @@ public class DisplayFunction : MonoBehaviour {
 			if(Physics.Raycast(MouseRayPoint,out MouseRayHit))
 			{
 				Vector3 mousePoint = Input.mousePosition;
-				mousePoint.z = 20;
+				mousePoint.z = 10;
 				Vector3 WorldMousePoint = Camera.main.ScreenToWorldPoint(mousePoint);
 				ModelTarget.transform.position = WorldMousePoint;
 			}
 			
 		}
+		//ModelTarget.transform.Rotate(0,100*Time.deltaTime,0);
 	}
 }
